@@ -7,9 +7,9 @@ See more at https://github.com/pmamico/java-ssl-tools
 
 ## How do I install these formulae?
 
-`brew install pmamico/java/jssl`
+`brew install pmamico/keg/jssl`
 
-Or `brew tap pmamico/java` and then `brew install jssl`.
+Or `brew tap pmamico/keg` and then `brew install jssl`.
 
 ## Documentation
 
