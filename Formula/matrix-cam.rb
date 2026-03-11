@@ -36,7 +36,10 @@ class MatrixCam < Formula
 
     opencv = resource("opencv-python")
     opencv.fetch
-    venv.pip_install opencv.cached_download
+    wheel_path = Pathname.new(opencv.cached_download)
+    wheel_copy = buildpath/File.basename(opencv.url)
+    cp wheel_path, wheel_copy
+    venv.pip_install wheel_copy
     venv.pip_install_and_link buildpath
   end
 
