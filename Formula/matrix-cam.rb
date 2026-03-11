@@ -46,7 +46,12 @@ class MatrixCam < Formula
   end
 
   def install
-    virtualenv_install_with_resources
+    python = Formula["python@3.12"].opt_bin/"python3.12"
+    venv = virtualenv_create(libexec, python)
+
+    venv.pip_install resource("numpy")
+    venv.pip_install resource("opencv-python")
+    venv.pip_install_and_link buildpath
   end
 
   test do
