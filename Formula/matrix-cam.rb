@@ -14,13 +14,27 @@ class MatrixCam < Formula
 
   depends_on "python@3.11"
 
+  resource "opencv-python" do
+    on_macos do
+      on_arm do
+        url "https://files.pythonhosted.org/packages/fc/6f/5a28fef4c4a382be06afe3938c64cc168223016fa520c5abaf37e8862aa5/opencv_python-4.13.0.92-cp37-abi3-macosx_13_0_arm64.whl"
+        sha256 "caf60c071ec391ba51ed00a4a920f996d0b64e3e46068aac1f646b5de0326a19"
+      end
+
+      on_intel do
+        url "https://files.pythonhosted.org/packages/08/ac/6c98c44c650b8114a0fb901691351cfb3956d502e8e9b5cd27f4ee7fbf2f/opencv_python-4.13.0.92-cp37-abi3-macosx_14_0_x86_64.whl"
+        sha256 "5868a8c028a0b37561579bfb8ac1875babdc69546d236249fff296a8c010ccf9"
+      end
+    end
+  end
+
   def install
     python = Formula["python@3.11"].opt_bin/"python3.11"
     venv = virtualenv_create(libexec, python)
 
     ENV["PIP_ONLY_BINARY"] = "numpy,opencv-python"
 
-    venv.pip_install "opencv-python"
+    venv.pip_install resource("opencv-python")
     venv.pip_install_and_link buildpath
   end
 
