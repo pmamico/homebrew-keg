@@ -34,7 +34,9 @@ class MatrixCam < Formula
 
     ENV["PIP_ONLY_BINARY"] = "numpy,opencv-python"
 
-    venv.pip_install resource("opencv-python")
+    opencv = resource("opencv-python")
+    opencv.fetch
+    venv.pip_install opencv.cached_download
     venv.pip_install_and_link buildpath
   end
 
