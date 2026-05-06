@@ -2,7 +2,7 @@
 
 ## `jssl`
 
-`jssl` is a keytool alternative for installing ssl certificates in java keystore.  
+`jssl` is a keytool alternative for diagnosing Java SSL issues, installing certificates, and listing managed certificates with expiration details.  
 See more at https://github.com/pmamico/jssl
 
 ### Install
